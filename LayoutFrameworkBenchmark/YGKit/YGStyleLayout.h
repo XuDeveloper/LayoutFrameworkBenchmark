@@ -1,0 +1,132 @@
+//
+//  YGStyleLayout.h
+//  XuDevYoga
+//
+//  Created by zhaoxuzhang on 2022/4/15.
+//
+
+#import <Foundation/Foundation.h>
+#import "YGStyleLayoutDefine.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+typedef NS_OPTIONS(NSInteger, YGStyleLayoutFlexibility) {
+    YGStyleLayoutFlexibilityFlexibleNone = 0,
+    YGStyleLayoutFlexibilityFlexibleWidth = 1 << 0,
+    YGStyleLayoutFlexibilityFlexibleHeight = 1 << 1,
+};
+
+@interface YGStyleLayout : NSObject
+
+@property (nonatomic, weak, readonly) UIView *view;
+
+YGSTYLELAYOUT_PROPERTY(addItem)
+YGSTYLELAYOUT_PROPERTY(addSpacer)
+YGSTYLELAYOUT_PROPERTY(addStack)
+YGSTYLELAYOUT_PROPERTY(define)
+YGSTYLELAYOUT_PROPERTY(isIncludedInLayout)
+YGSTYLELAYOUT_PROPERTY(direction)
+YGSTYLELAYOUT_PROPERTY(flexDirection)
+YGSTYLELAYOUT_PROPERTY(justifyContent)
+YGSTYLELAYOUT_PROPERTY(alignContent)
+YGSTYLELAYOUT_PROPERTY(alignItems)
+YGSTYLELAYOUT_PROPERTY(alignSelf)
+YGSTYLELAYOUT_PROPERTY(position)
+YGSTYLELAYOUT_PROPERTY(flexWrap)
+YGSTYLELAYOUT_PROPERTY(overflow)
+YGSTYLELAYOUT_PROPERTY(display)
+YGSTYLELAYOUT_PROPERTY(flexGrow)
+YGSTYLELAYOUT_PROPERTY(flexShrink)
+YGSTYLELAYOUT_PROPERTY(flexBasis)
+YGSTYLELAYOUT_PROPERTY(left)
+YGSTYLELAYOUT_PROPERTY(leftPercent)
+YGSTYLELAYOUT_PROPERTY(top)
+YGSTYLELAYOUT_PROPERTY(topPercent)
+YGSTYLELAYOUT_PROPERTY(right)
+YGSTYLELAYOUT_PROPERTY(rightPercent)
+YGSTYLELAYOUT_PROPERTY(bottom)
+YGSTYLELAYOUT_PROPERTY(bottomPercent)
+YGSTYLELAYOUT_PROPERTY(start)
+YGSTYLELAYOUT_PROPERTY(startPercent)
+YGSTYLELAYOUT_PROPERTY(end)
+YGSTYLELAYOUT_PROPERTY(endPercent)
+YGSTYLELAYOUT_PROPERTY(all)
+YGSTYLELAYOUT_PROPERTY(allPercent)
+YGSTYLELAYOUT_PROPERTY(marginTop)
+YGSTYLELAYOUT_PROPERTY(marginTopPercent)
+YGSTYLELAYOUT_PROPERTY(marginLeft)
+YGSTYLELAYOUT_PROPERTY(marginLeftPercent)
+YGSTYLELAYOUT_PROPERTY(marginBottom)
+YGSTYLELAYOUT_PROPERTY(marginBottomPercent)
+YGSTYLELAYOUT_PROPERTY(marginRight)
+YGSTYLELAYOUT_PROPERTY(marginRightPercent)
+YGSTYLELAYOUT_PROPERTY(marginStart)
+YGSTYLELAYOUT_PROPERTY(marginStartPercent)
+YGSTYLELAYOUT_PROPERTY(marginEnd)
+YGSTYLELAYOUT_PROPERTY(marginEndPercent)
+YGSTYLELAYOUT_PROPERTY(marginHorizontal)
+YGSTYLELAYOUT_PROPERTY(marginHorizontalPercent)
+YGSTYLELAYOUT_PROPERTY(marginVertical)
+YGSTYLELAYOUT_PROPERTY(marginVerticalPercent)
+YGSTYLELAYOUT_PROPERTY(margin)
+YGSTYLELAYOUT_PROPERTY(marginPercent)
+YGSTYLELAYOUT_PROPERTY(marginInsets)
+YGSTYLELAYOUT_PROPERTY(paddingTop)
+YGSTYLELAYOUT_PROPERTY(paddingTopPercent)
+YGSTYLELAYOUT_PROPERTY(paddingLeft)
+YGSTYLELAYOUT_PROPERTY(paddingLeftPercent)
+YGSTYLELAYOUT_PROPERTY(paddingBottom)
+YGSTYLELAYOUT_PROPERTY(paddingBottomPercent)
+YGSTYLELAYOUT_PROPERTY(paddingRight)
+YGSTYLELAYOUT_PROPERTY(paddingRightPercent)
+YGSTYLELAYOUT_PROPERTY(paddingStart)
+YGSTYLELAYOUT_PROPERTY(paddingStartPercent)
+YGSTYLELAYOUT_PROPERTY(paddingEnd)
+YGSTYLELAYOUT_PROPERTY(paddingEndPercent)
+YGSTYLELAYOUT_PROPERTY(paddingHorizontal)
+YGSTYLELAYOUT_PROPERTY(paddingHorizontalPercent)
+YGSTYLELAYOUT_PROPERTY(paddingVertical)
+YGSTYLELAYOUT_PROPERTY(paddingVerticalPercent)
+YGSTYLELAYOUT_PROPERTY(padding)
+YGSTYLELAYOUT_PROPERTY(paddingPercent)
+YGSTYLELAYOUT_PROPERTY(paddingInsets)
+YGSTYLELAYOUT_PROPERTY(size)
+YGSTYLELAYOUT_PROPERTY(width)
+YGSTYLELAYOUT_PROPERTY(widthPercent)
+YGSTYLELAYOUT_PROPERTY(height)
+YGSTYLELAYOUT_PROPERTY(heightPercent)
+YGSTYLELAYOUT_PROPERTY(minWidth)
+YGSTYLELAYOUT_PROPERTY(minWidthPercent)
+YGSTYLELAYOUT_PROPERTY(minHeight)
+YGSTYLELAYOUT_PROPERTY(minHeightPercent)
+YGSTYLELAYOUT_PROPERTY(maxWidth)
+YGSTYLELAYOUT_PROPERTY(maxWidthPercent)
+YGSTYLELAYOUT_PROPERTY(maxHeight)
+YGSTYLELAYOUT_PROPERTY(maxHeightPercent)
+YGSTYLELAYOUT_PROPERTY(borderLeftWidth)
+YGSTYLELAYOUT_PROPERTY(borderTopWidth)
+YGSTYLELAYOUT_PROPERTY(borderRightWidth)
+YGSTYLELAYOUT_PROPERTY(borderBottomWidth)
+YGSTYLELAYOUT_PROPERTY(aspectRatio)
+YGSTYLELAYOUT_PROPERTY(backgroundColor)
+YGSTYLELAYOUT_PROPERTY(cornerRadius)
+YGSTYLELAYOUT_PROPERTY(userInteractionEnabled)
+
+// overlay
+YGSTYLELAYOUT_PROPERTY(overlay)
+YGSTYLELAYOUT_PROPERTY(overlayPosition)
+
+@property (nonatomic, readonly, assign) BOOL isDirty;
+@property (nonatomic, readonly, assign) BOOL isLeaf;
+
+- (instancetype)initWithView:(nullable UIView *)view;
+
+- (void)layout;
+- (void)layoutWithFlexibility:(YGStyleLayoutFlexibility)flexibility;
+- (void)markDirty;
+- (CGSize)sizeThatFits:(CGSize)size;
+- (void)reset;
+
+@end
+
+NS_ASSUME_NONNULL_END

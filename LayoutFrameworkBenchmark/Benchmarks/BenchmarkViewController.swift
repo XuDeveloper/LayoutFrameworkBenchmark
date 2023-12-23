@@ -67,7 +67,11 @@ class BenchmarkViewController: UITableViewController {
                 NSLog("UIStackView only supported on iOS 9+")
                 return nil
             }
-        })
+        }),
+        
+        ViewControllerData(title: "YGStyleLayout", factoryBlock: { viewCount in
+            return CollectionViewControllerInOc(data: FeedItemDataInOc.generate(withCount: viewCount))
+        }),
     ]
 
     convenience init() {

@@ -17,4 +17,5 @@ target 'LayoutFrameworkBenchmark' do
     pod 'Texture'
 
     pod 'Reveal-SDK'
+    pod 'YogaKit', '~> 1.7'
 end
